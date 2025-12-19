@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Saga of Tanya the Evil | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">El-Novel</a>
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="novels.html" class="active">Novels</a>
+      <a href="explore.html">Explore</a>
+      <a href="joinUs.html" >Join Us</a>
+    </nav>
+    <div class="theme-toggle">
+      <input type="checkbox" id="mode-switch">
+      <label for="mode-switch" class="switch"></label>
+    </div>
+  </header>
+
+  <main class="novel-detail">
+    <div class="detail-container">
+    
+      <div class="detail-content">
+  
+        <!-- COVER -->
+        <div class="detail-cover">
+          <img src="Library/youjo.jpg" alt="Tanya the Evil">
+        </div>
+  
+        <!-- INFO -->
+        <div class="detail-info">
+          <h2>The Saga of Tanya the Evil</h2>
+  
+          <p class="author"><strong>Author:</strong> Carlo Zen</p>
+  
+          <div class="rating">★4.7/5</div>
+  
+          <p><strong>Genre:</strong> Military, Fantasy, Isekai, Wars</p>
+  
+          <p class="desc">
+            “Di garis depan perang, ada seorang gadis kecil. Berambut pirang, bermata biru, dan berkulit putih porselen, ia memimpin pasukan dengan suara cadelnya. Namanya Tanya Degurechaff. Namun sebenarnya, ia adalah salah satu salaryman paling elite di Jepang, yang terlahir kembali sebagai seorang gadis kecil setelah membuat marah makhluk misterius bernama X yang menyebut dirinya ‘Tuhan.’Dan gadis kecil ini, yang mengutamakan efisiensi dan kariernya di atas segalanya, akan menjadi sosok paling berbahaya di antara para penyihir dalam pasukan kekaisaran.”
+          </p>
+  
+          <div class="review-box">
+            <h3>Reviewer’s Thoughts</h3>
+            <p>“Ini adalah kisah yang sangat dipengaruhi oleh filsafat mendalam tentang perang dan juga sedikit tentang agama. Tema yang diusung penulis jelas dan ringkas, hampir bersifat pragmatis. Namun, untuk dapat menikmati cerita ini, pembaca harus terbiasa membaca disertasi akademis maupun filosofis, serta secara aktif terlibat dan mempertanyakan isi yang disampaikan oleh penulis.Jika Anda membaca seri ini dengan ekspektasi bahwa ceritanya akan bernarasi secara biasa, penuh aksi dan dialog, maka kemungkinan besar Anda tidak akan bisa menikmatinya. Cara penulis menulis seri ini menunjukkan bahwa ia melakukan banyak riset tentang perang sebagai subjek sekaligus banyak kontemplasi untuk menyatakan pendapatnya mengenai perang melalui bantuan karakter-karakter dalam ceritanya.
+            Untungnya, ia menciptakan karakter-karakter yang meyakinkan, masing-masing dengan filsafatnya sendiri, sehingga ada diskusi atau debat yang dinamis dalam meninjau suatu topik di sepanjang alur cerita.”</p>
+          </div>
+          <section class="novel-pv">
+            <h3>Promotional Video</h3>
+
+            <div class="pv-wrapper">
+              <iframe
+                src="https://youtube.com/embed/W-pBITctPw0?si=DFJVW9dFjYQQ2yv3"
+                title="Novel Promotional Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </section>
+  
+          <div class="detail-buttons">
+            <a href="Novels.html" class="btn-small">← Back to Novels</a>
+            <a href="https://isekai.fandom.com/wiki/The_Saga_of_Tanya_the_Evil" class="btn-small">More Info</a>
+          </div>
+  </main>
+
+  <footer></footer>
+    <p>© 2025 El-Novel. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="AboutUs.html">About Us</a> 
+    </div>
+  </footer>  <footer><p>© 2025 El-Novel. All rights reserved.</p></footer>
+
+  <script>
+       const switchToggle = document.getElementById("mode-switch");
+    switchToggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode", switchToggle.checked);
+    });
+    const modeSwitch = document.getElementById("mode-switch");
+
+// Ambil mode dari localStorage
+const savedMode = localStorage.getItem("theme");
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true; // checkbox ikut aktif
+}
+
+// Saat toggle di-klik
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light"); // simpan pilihan
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark"); // simpan pilihan
+  }
+});
+
+// Ambil judul novel dari halaman (gunakan judul di <h2>)
+  const novelTitle = document.querySelector("h2").innerText;
+
+// Ambil tanggal hari ini
+const today = new Date().toISOString().slice(0, 10);
+
+// --- Fungsi Ambil & Simpan ---
+function getData(key, defaultValue) {
+    return JSON.parse(localStorage.getItem(key)) || defaultValue;
+}
+
+function saveData(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+// --- DAILY COUNTER ---
+let daily = getData("dailyVisits", {});
+let dailyDate = localStorage.getItem("dailyDate");
+
+if (dailyDate !== today) {
+    daily = {}; // reset harian
+    localStorage.setItem("dailyDate", today);
+}
+
+// tambah kunjungan
+daily[novelTitle] = (daily[novelTitle] || 0) + 1;
+saveData("dailyVisits", daily);
+
+// --- WEEKLY COUNTER ---
+let weekly = getData("weeklyVisits", {});
+let weeklyStart = localStorage.getItem("weeklyStart");
+
+const now = new Date();
+const weekYear = `${now.getFullYear()}-W${Math.ceil(now.getDate() / 7)}`;
+
+if (weeklyStart !== weekYear) {
+    weekly = {}; // reset mingguan
+    localStorage.setItem("weeklyStart", weekYear);
+}
+
+weekly[novelTitle] = (weekly[novelTitle] || 0) + 1;
+saveData("weeklyVisits", weekly);
+
+// --- MONTHLY COUNTER ---
+let monthly = getData("monthlyVisits", {});
+let monthlyStart = localStorage.getItem("monthlyStart");
+const monthYear = `${now.getFullYear()}-${now.getMonth()+1}`;
+
+if (monthlyStart !== monthYear) {
+    monthly = {}; // reset bulanan
+    localStorage.setItem("monthlyStart", monthYear);
+}
+
+monthly[novelTitle] = (monthly[novelTitle] || 0) + 1;
+saveData("monthlyVisits", monthly);
+  </script>
+</body>
+</html>

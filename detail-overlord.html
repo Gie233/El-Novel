@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Overlord | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">El-Novel</a>
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="novels.html" class="active">Novels</a>
+      <a href="explore.html">Explore</a>
+      <a href="joinUs.html" >Join Us</a>
+    </nav>
+    <div class="theme-toggle">
+      <input type="checkbox" id="mode-switch">
+      <label for="mode-switch" class="switch"></label>
+    </div>
+  </header>
+
+  <main class="novel-detail">
+    <div class="detail-container">
+      <div class="detail-content">
+        <div class="detail-cover">
+          <img src="Library/Ovrld.jpg" alt="Overlord">
+        </div>
+
+        <div class="detail-info">
+          <h2>Overlord</h2>
+          <p class="author"><strong>Author:</strong> Kugane Maruyama</p>
+          <div class="rating">★4.4/5</div>
+          <p><strong>Genre:</strong> Fantasy, Sci-Fi, Isekai, Action, War</p>
+
+          <p class="desc">
+            Pada abad ke-21, dunia memasuki tahap baru permainan VR… dan “YGGDRASIL” dianggap sebagai puncak dari semua MMORPG. Namun, setelah pengumuman bahwa semua server akan dimatikan, gim online Yggdrasil pun ditutup… atau seharusnya begitu. Tetapi, entah mengapa, karakter pemain tidak ter-logout meskipun server telah resmi ditutup.
+            
+            Para NPC mulai memiliki kesadaran. Seorang pemuda biasa yang menyukai gim di dunia nyata tampaknya telah terbawa ke dunia lain bersama guild-nya, menjadi penyihir terkuat dengan wujud kerangka—Momonga. Ia memimpin guild-nya, **Ainz Ooal Gown**, menuju sebuah petualangan fantasi legendaris yang belum pernah terjadi sebelumnya!
+            </p>
+
+          <div class="review-box">
+            <h3>Reviewer’s Thoughts</h3>
+            <p>Protagonis yang overpowered dengan dinamika yang kocak—ini tepatnya yang saya cari ketika melihat isekai dengan MC OP. Worldbuilding-nya bagus dan menarik, dan perkembangan plotnya juga dilakukan dengan baik. Sebagian besar cerita berfokus pada bagaimana dunia bereaksi terhadap makhluk yang sangat jauh lebih superior dari mereka, serta bagaimana makhluk-makhluk tersebut memandang dunia yang begitu inferior.
+
+              Interaksi-interaksi itu menjadi sorotan utama novel ini dan membuatnya sangat berkesan. Jenis ketegangan di mana kita tahu bahwa para penduduk dunia baru yang lemah sudah “matang”—tak berdaya—melawan Nazarick dan kekuatan luar biasa Ainz, adalah ketegangan yang tepat dalam cerita protagonis OP.
+              
+              Mekanisme gimnya juga dijelajahi dengan sangat baik. Secara keseluruhan, ini adalah isekai ikonik dan sangat direkomendasikan untuk light novel.</p>
+          </div>
+
+          <section class="novel-pv">
+            <h3>Promotional Video</h3>
+
+            <div class="pv-wrapper">
+              <iframe
+                src="https://youtu.be/embed/gg5uZ56VmAo?si=u5aGGyKFv4vVYoA2"
+                title="Novel Promotional Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </section>
+
+          <div class="detail-buttons">
+            <a href="Novels.html" class="btn-small">← Back to Novels</a>
+            <a href="https://overlordmaruyama.fandom.com/wiki/Overlord" class="btn-small">More Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 El-Novel. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="AboutUs.html">About Us</a> 
+    </div>
+  </footer>
+  <script>
+    const switchToggle = document.getElementById("mode-switch");
+    switchToggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode", switchToggle.checked);
+    });
+    const modeSwitch = document.getElementById("mode-switch");
+
+// Ambil mode dari localStorage
+const savedMode = localStorage.getItem("theme");
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true;
+}
+
+// Ketika switch diubah
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark");
+  }
+});
+
+// ===============================
+// VISIT COUNTER FOR NOVEL DETAIL
+// ===============================
+function trackNovelVisit() {
+    const titleElement = document.querySelector("h2");
+    if (!titleElement) return; // stop if not a detail page
+
+    const novelTitle = titleElement.innerText;
+    const today = new Date().toISOString().slice(0, 10);
+
+    const now = new Date();
+    const weekKey = `${now.getFullYear()}-W${Math.ceil(now.getDate() / 7)}`;
+    const monthKey = `${now.getFullYear()}-${now.getMonth() + 1}`;
+
+    function load(key, def) {
+        return JSON.parse(localStorage.getItem(key)) || def;
+    }
+    function save(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    // === DAILY ===
+    let daily = load("dailyVisits", {});
+    let dailyDate = localStorage.getItem("dailyDate");
+    if (dailyDate !== today) {
+        daily = {};
+        localStorage.setItem("dailyDate", today);
+    }
+    daily[novelTitle] = (daily[novelTitle] || 0) + 1;
+    save("dailyVisits", daily);
+
+    // === WEEKLY ===
+    let weekly = load("weeklyVisits", {});
+    let weeklyDate = localStorage.getItem("weeklyStart");
+    if (weeklyDate !== weekKey) {
+        weekly = {};
+        localStorage.setItem("weeklyStart", weekKey);
+    }
+    weekly[novelTitle] = (weekly[novelTitle] || 0) + 1;
+    save("weeklyVisits", weekly);
+
+    // === MONTHLY ===
+    let monthly = load("monthlyVisits", {});
+    let monthlyDate = localStorage.getItem("monthlyStart");
+    if (monthlyDate !== monthKey) {
+        monthly = {};
+        localStorage.setItem("monthlyStart", monthKey);
+    }
+    monthly[novelTitle] = (monthly[novelTitle] || 0) + 1;
+    save("monthlyVisits", monthly);
+}
+
+
+
+// ====================================================
+// RANKING PAGE — LOAD DATA
+// ====================================================
+function loadRanking(type, containerId = "rankingList") {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const data = JSON.parse(localStorage.getItem(type + "Visits")) || {};
+    const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]);
+
+    container.innerHTML = "";
+
+    if (sorted.length === 0) {
+        container.innerHTML = "<li style='text-align:center;'>Belum ada data.</li>";
+        return;
+    }
+
+    sorted.forEach(([title, count], i) => {
+        container.innerHTML += `
+            <li>
+                <span class="rank-num">${i + 1}</span>
+                <span class="rank-title">${title}</span>
+                <span style="float:right;color:gray;">${count} views</span>
+            </li>
+        `;
+    });
+}
+
+  </script>
+</body>
+</html>

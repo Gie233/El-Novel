@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">El-Novel</a>
+  <nav class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="Novels.html">Novels</a>
+    <a href="Explore.html" class="active">Explore</a>
+    <a href="JoinUs.html" >Join Us</a>
+  </nav>
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="mode-switch" aria-label="Toggle theme">
+    <label for="mode-switch" class="switch"></label>
+  </div>
+</header>
+
+<main class="explore-page">
+
+  <h2>Explore Novels</h2>
+  <p class="explore-desc">Find trending, top-rated, and editor's picks curated specially for you.</p>
+
+  <!-- ========================== -->
+  <!-- Editor's Picks -->
+  <!-- ========================== -->
+  <section class="explore-section">
+    <h3>Editor's Picks</h3>
+
+    <div class="novel-grid">
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/LOM.jpg" alt="The Lord of Mysteries cover"></div>
+        <h4>The Lord of Mysteries</h4>
+        <div class="rating" aria-hidden="true">★4.9/5</div>
+        <a href="detail-the-lord-of-mysteries.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/SdwSlv.jpg" alt="Shadow Slave cover"></div>
+        <h4>Shadow Slave</h4>
+        <div class="rating" aria-hidden="true">★4.7/5</div>
+        <a href="detail-shadow-slave.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/Chito.jpg" alt="Chitose Is in the Ramune Bottle cover"></div>
+        <h4>Chitose Is in the Ramune Bottle</h4>
+        <div class="rating" aria-hidden="true">★4.4/5</div>
+        <a href="detail-chitose-ramune.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/TBATE.jpg" alt="The Beginning After The End cover"></div>
+        <h4>The Beginning After The End</h4>
+        <div class="rating" aria-hidden="true">★4.2/5</div>
+        <a href="detail-tbate.html" class="btn-small">Explore</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================== -->
+  <!-- Top Rated -->
+  <!-- ========================== -->
+  <section class="explore-section">
+    <h3>Top Rated Novels</h3>
+
+    <div class="novel-grid">
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/TMLH.jpg" alt="Too Many Losing Heroines cover"></div>
+        <h4>Too Many Losing Heroines!</h4>
+        <div class="rating" aria-hidden="true">★4.6/5</div>
+        <a href="detail-tmlh.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/Ovrld.jpg" alt="Overlord cover"></div>
+        <h4>Overlord</h4>
+        <div class="rating" aria-hidden="true">★4.4/5</div>
+        <a href="detail-overlord.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/TAPOV.jpg" alt="The Author's POV cover"></div>
+        <h4>The Author's POV</h4>
+        <div class="rating" aria-hidden="true">★4.0/5</div>
+        <a href="detail-authors-pov.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/OIP.jpg" alt="Cultivation Online cover"></div>
+        <h4>Cultivation Online</h4>
+        <div class="rating" aria-hidden="true">★4.3/5</div>
+        <a href="detail-cultivation-online.html" class="btn-small">Explore</a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+<footer>
+  <p>© 2025 El-Novel. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="AboutUs.html">About Us</a> 
+  </div>
+</footer>
+
+<script>
+  // Tunggu DOM siap
+  document.addEventListener('DOMContentLoaded', () => {
+    const modeSwitch = document.getElementById("mode-switch");
+
+    // Jika elemen tidak ditemukan, hentikan
+    if (!modeSwitch) return;
+
+    // Ambil mode dari localStorage (default: dark)
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode === "light") {
+      document.body.classList.add("light-mode");
+      modeSwitch.checked = true;
+    } else {
+      // optional: pastikan class dark dihapus jika ada konfigurasi awal
+      document.body.classList.remove("light-mode");
+      modeSwitch.checked = false;
+    }
+
+    // Toggle handler
+    modeSwitch.addEventListener("change", () => {
+      if (modeSwitch.checked) {
+        document.body.classList.add("light-mode");
+        localStorage.setItem("theme", "light");
+      } else {
+        document.body.classList.remove("light-mode");
+        localStorage.setItem("theme", "dark");
+      }
+    });
+
+    // Shuffle function yang aman (cek keberadaan container)
+    function shuffleCards(containerSelector) {
+      const container = document.querySelector(containerSelector);
+      if (!container) return; // tidak ada container -> tidak melakukan apa-apa
+      const cards = Array.from(container.children);
+      // Fisher–Yates Shuffle
+      for (let i = cards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        // Tukar elemen dalam array
+        [cards[i], cards[j]] = [cards[j], cards[i]];
+      }
+      // Masukkan ulang ke container (performance: gunakan DocumentFragment)
+      const frag = document.createDocumentFragment();
+      cards.forEach(card => frag.appendChild(card));
+      container.appendChild(frag);
+    }
+
+    // Jalankan hanya untuk section TOP RATED (sekunder .explore-section)
+    // Pastikan memilih .novel-grid dari section ke-2
+    shuffleCards(".explore-section:nth-of-type(2) .novel-grid");
+  });
+</script>
+
+</body>
+</html>

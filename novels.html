@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Novels | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">El-Novel</a>
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="Novels.html" class="active">Novels</a>
+      <a href="Explore.html">Explore</a>
+      <a href="JoinUs.html" >Join Us</a>
+
+    </nav>
+    <div class="theme-toggle">
+      <input type="checkbox" id="mode-switch">
+      <label for="mode-switch" class="switch"></label>
+    </div>
+  </header>
+
+  <main class="novel-page">
+    <h2>All Novels</h2>
+
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="Search novel..." />
+      <select id="genreFilter">
+        <option value="all">All Genres</option>
+        <option value="action">Action</option>
+        <option value="adventure">Adventure</option>
+        <option value="comedy">Comedy</option>
+        <option value="fantasy">Fantasy</option>
+        <option value="isekai">Isekai</option>
+        <option value="mystery">Mystery</option>
+        <option value="post-apocalyptic">Post-Apocalyptic</option>
+        <option value="psychological">Psychological</option>
+        <option value="romance">Romance</option>
+        <option value="school">School</option>
+        <option value="sci-fi">Sci-Fi</option>
+        <option value="slice of life">Slice of Life</option>
+        <option value="war">War</option>
+      </select>
+    </div>
+
+    <div id="novelGrid" class="novel-grid">
+      <!-- Each card is static HTML and contains data-* attributes used by JS -->
+      <div class="novel-card" data-title="The Lord of Mysteries" data-genre="Action, Fantasy, Mystery, Psychological" data-rating="4.9">
+        <div class="novel-cover"><img src="Library/LOM.jpg" alt="The Lord of Mysteries"></div>
+        <h4>The Lord of Mysteries</h4>
+        <div class="rating">★4.9/5</div>
+        <a href="detail-the-lord-of-mysteries.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Classroom of the Elite" data-genre="School, Psychological" data-rating="4.3">
+        <div class="novel-cover"><img src="Library/Cote.jpg" alt="Classroom of the Elite"></div>
+        <h4>Classroom of the Elite</h4>
+        <div class="rating">★4.3/5</div>
+        <a href="detail-classroom-of-the-elite.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Shadow Slave" data-genre="Fantasy, Post-Apocalyptic, Adventure, Action" data-rating="4.7">
+        <div class="novel-cover"><img src="Library/SdwSlv.jpg" alt="Shadow Slave"></div>
+        <h4>Shadow Slave</h4>
+        <div class="rating">★4.7/5</div>
+        <a href="detail-shadow-slave.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Eighty-Six" data-genre="Sci-Fi, Romance, War, Action" data-rating="4.2">
+        <div class="novel-cover"><img src="Library/Eightysix.jpg" alt="Eighty-Six"></div>
+        <h4>Eighty-Six</h4>
+        <div class="rating">★4.2/5</div>
+        <a href="detail-eighty-six.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Chitose Is In The Ramune Bottle" data-genre="Romance, School, Slice of Life" data-rating="4.4">
+        <div class="novel-cover"><img src="Library/Chito.jpg" alt="Chitose Is In The Ramune Bottle"></div>
+        <h4>Chitose Is In The Ramune Bottle</h4>
+        <div class="rating">★4.4/5</div>
+        <a href="detail-chitose-is-in-the-ramune-bottle.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Lord of Mysteries: Circle of Inevitability" data-genre="Fantasy, Mystery, Action, Psychological" data-rating="4.3">
+        <div class="novel-cover"><img src="Library/circle.jpg" alt="Circle of Inevitability"></div>
+        <h4>Lord of Mysteries: Circle of Inevitability</h4>
+        <div class="rating">★4.3/5</div>
+        <a href="detail-circle-of-inevitability.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Overlord" data-genre="Fantasy, Sci-Fi, Isekai, Action, War" data-rating="4.4">
+        <div class="novel-cover"><img src="Library/Ovrld.jpg" alt="Overlord"></div>
+        <h4>Overlord</h4>
+        <div class="rating">★4.4/5</div>
+        <a href="detail-overlord.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Too Many Losing Heroines!" data-genre="Romance, School, Comedy, Slice of Life" data-rating="4.6">
+        <div class="novel-cover"><img src="Library/TMLH.jpg" alt="Too Many Losing Heroines!"></div>
+        <h4>Too Many Losing Heroines!</h4>
+        <div class="rating">★4.6/5</div>
+        <a href="detail-too-many-losing-heroines.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="The Author's POV" data-genre="Sci-Fi, Fantasy, Action, Adventure" data-rating="4.0">
+        <div class="novel-cover"><img src="Library/TAPOV.jpg" alt="The Author's POV"></div>
+        <h4>The Author's POV</h4>
+        <div class="rating">★4.0/5</div>
+        <a href="detail-the-authors-pov.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="The Beginning After The End" data-genre="Fantasy, Romance, Adventure" data-rating="4.2">
+        <div class="novel-cover"><img src="Library/TBATE.jpg" alt="The Beginning After The End"></div>
+        <h4>The Beginning After The End</h4>
+        <div class="rating">★4.2/5</div>
+        <a href="detail-the-beginning-after-the-end.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Tale of the White Empire" data-genre="Fantasy, Adventure, War" data-rating="4.1">
+        <div class="novel-cover"><img src="Library/TOTWE.png" alt="Tale of the White Empire"></div>
+        <h4>Tale of the White Empire</h4>
+        <div class="rating">★4.1/5</div>
+        <a href="detail-tale-of-the-white-empire.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Cultivation Online" data-genre="Fantasy, Sci-Fi, Cultivation, Adventure" data-rating="4.3">
+        <div class="novel-cover"><img src="Library/OIP.jpg" alt="Cultivation Online"></div>
+        <h4>Cultivation Online</h4>
+        <div class="rating">★4.3/5</div>
+        <a href="detail-cultivation-online.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="The Saga of Tanya the Evil" data-genre="Military, Isekai, Fantasy, War" data-rating="4.0">
+        <div class="novel-cover"><img src="Library/youjo.jpg" alt="The Saga of Tanya the Evil"></div>
+        <h4>The Saga of Tanya the Evil</h4>
+        <div class="rating">★4.7/5</div>
+        <a href="detail-tanya-evil.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Who Killed the Hero" data-genre="Fantasy, Mystery, Adventure, Psychological" data-rating="4.6">
+        <div class="novel-cover"><img src="Library/Who-Killed-Hero.jpg" alt="Who Killed the Hero"></div>
+        <h4>Who Killed the Hero?</h4>
+        <div class="rating">★4.6/5</div>
+        <a href="detail-who-killed-the-hero.html" class="btn-small">Read More</a>
+      </div>
+
+      <div class="novel-card" data-title="Eminence in Shadow" data-genre="Comedy, Isekai, Action, Fantasy" data-rating="4.5">
+        <div class="novel-cover"><img src="Library/To-Be-a-Power-in-the-Shadows.jpg" alt="Eminence in Shadow"></div>
+        <h4>Eminence in Shadow</h4>
+        <div class="rating">★4.5/5</div>
+        <a href="detail-eminence-shadow.html" class="btn-small">Read More</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 El-Novel. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="AboutUs.html">About Us</a> 
+    </div>
+  </footer>
+
+  <script>
+    const switchToggle = document.getElementById("mode-switch");
+    switchToggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode", switchToggle.checked);
+    });
+    const modeSwitch = document.getElementById("mode-switch");
+
+// Ambil mode dari localStorage
+const savedMode = localStorage.getItem("theme");
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true; // checkbox ikut aktif
+}
+
+// Saat toggle di-klik
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light"); // simpan pilihan
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark"); // simpan pilihan
+  }
+});
+    // Search & Filter (reads data from DOM attributes)
+    const searchInput = document.getElementById("searchInput");
+    const genreFilter = document.getElementById("genreFilter");
+    const novelGrid = document.getElementById("novelGrid");
+    const cards = Array.from(novelGrid.getElementsByClassName("novel-card"));
+
+    function normalize(str) {
+      return (str || "").toLowerCase();
+    }
+
+    function filterCards() {
+      const q = normalize(searchInput.value.trim());
+      const selectedGenre = normalize(genreFilter.value);
+
+      cards.forEach(card => {
+        const title = normalize(card.dataset.title);
+        const genres = normalize(card.dataset.genre); // comma separated
+        const matchesSearch = q === "" || title.includes(q);
+        const matchesGenre = selectedGenre === "all" || genres.includes(selectedGenre);
+        if (matchesSearch && matchesGenre) {
+          card.style.display = ""; // show
+        } else {
+          card.style.display = "none"; // hide
+        }
+      });
+    }
+
+    searchInput.addEventListener("input", filterCards);
+    genreFilter.addEventListener("change", filterCards);
+
+    filterCards();
+  </script>
+
+</body>
+</html>

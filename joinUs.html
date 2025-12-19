@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Us | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css">
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">El-Novel</a>
+  <nav class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="Novels.html">Novels</a>
+    <a href="Explore.html">Explore</a>
+    <a href="JoinUs.html" class="active">Join Us</a>
+  </nav>
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="mode-switch">
+    <label for="mode-switch" class="switch"></label>
+  </div>
+</header>
+
+<main class="join-page">
+
+    <h2>Join Our Community</h2>
+    <p class="join-desc">Daftar untuk bergabung bersama komunitas penggemar novel!</p>
+  
+    <form id="joinForm" class="join-form">
+  
+      <label>Nama Lengkap</label>
+      <input type="text" id="name" placeholder="Masukkan nama kamu" required>
+  
+      <label>Email</label>
+      <input type="email" id="email" placeholder="example@gmail.com" required>
+  
+      <label>Tanggal Lahir</label>
+      <input type="date" id="birthdate" required>
+  
+      <label>Kota</label>
+      <input type="text" id="city" placeholder="Contoh: Jakarta" required>
+  
+      <label>Negara</label>
+      <select id="country" required>
+        <option value="">-- Pilih Negara --</option>
+        <option>Indonesia</option>
+        <option>Malaysia</option>
+        <option>Singapore</option>
+        <option>Philippines</option>
+        <option>Japan</option>
+        <option>South Korea</option>
+        <option>USA</option>
+        <option>Other</option>
+      </select>
+  
+      <label>Gender</label>
+      <div class="gender-box">
+        <label><input type="radio" name="gender" value="Laki-laki" required> Laki-laki</label>
+        <label><input type="radio" name="gender" value="Perempuan"> Perempuan</label>
+        <label><input type="radio" name="gender" value="Lainnya"> Lainnya</label>
+      </div>
+  
+      <label>Alasan Bergabung</label>
+      <textarea id="reason" rows="4" placeholder="Ceritakan alasan kamu..." required></textarea>
+  
+      <button type="submit" class="btn">Daftar Sekarang</button>
+  
+    </form>
+    <p id="successMsg" class="success-msg"></p>
+  </main>
+  
+<footer>
+  <p>© 2025 El-Novel. All rights reserved.</p>
+  <div class="footer-links"></div>
+    <a href="AboutUs.html">About Us</a> 
+  </div>
+</footer>
+
+<script>
+    /* ==========================
+       SAVE FORM TO LOCAL STORAGE
+    ========================== */
+    document.getElementById("joinForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+    
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const birth = document.getElementById("birthdate").value;
+      const city = document.getElementById("city").value;
+      const country = document.getElementById("country").value;
+      const reason = document.getElementById("reason").value;
+      const gender = document.querySelector('input[name="gender"]:checked').value;
+    
+      const newMember = {
+        name: name,
+        email: email,
+        birthdate: birth,
+        city: city,
+        country: country,
+        gender: gender,
+        reason: reason,
+        date: new Date().toLocaleString()
+      };
+    
+      let list = JSON.parse(localStorage.getItem("memberList")) || [];
+      list.push(newMember);
+      localStorage.setItem("memberList", JSON.stringify(list));
+    
+      document.getElementById("successMsg").textContent = 
+        "🎉 Pendaftaran berhasil! Selamat datang di komunitas El-Novel.";
+    
+      document.getElementById("joinForm").reset();
+    });
+    
+    
+    /* ==========================
+       THEME MODE (LOCAL STORAGE)
+    ========================== */
+    const modeSwitch = document.getElementById("mode-switch");
+    const savedMode = localStorage.getItem("theme");
+    
+    if (savedMode === "light") {
+      document.body.classList.add("light-mode");
+      modeSwitch.checked = true;
+    }
+    
+    modeSwitch.addEventListener("change", () => {
+      if (modeSwitch.checked) {
+        document.body.classList.add("light-mode");
+        localStorage.setItem("theme", "light");
+      } else {
+        document.body.classList.remove("light-mode");
+        localStorage.setItem("theme", "dark");
+      }
+    });
+    </script>
+    
+
+</body>
+</html>

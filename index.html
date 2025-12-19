@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El-Novel | Discover Your Next Story</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">El-Novel</a>
+  <nav class="nav-center">
+    <a href="index.html" class="active">Home</a>
+    <a href="novels.html">Novels</a>
+    <a href="explore.html">Explore</a>
+    <a href="joinUs.html" >Join Us</a>
+  </nav>
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="mode-switch">
+    <label for="mode-switch" class="switch"></label>
+  </div>
+</header>
+
+
+<!--PV HERO BANNER-->
+<section class="pv-banner">
+
+  <video class="pv-video" autoplay muted loop playsinline>
+    <source src="Library/LOM Praise The Fool.mp4" type="video/mp4">
+    Your browser does not support video playback.
+  </video>
+
+  <div class="pv-overlay"></div>
+
+  <div class="pv-content">
+    <h1 class="pv-title">Featured Novel PV</h1>
+    <p class="pv-desc">Experience the world of our highlighted story—watch the exclusive PV now!</p>
+    
+    <button id="unmute-btn" class="pv-unmute">🔊</button>
+
+    <div class="pv-buttons">
+      <a href="detail-the-lord-of-mysteries.html" class="pv-btn">Explore Now</a>
+      <a href="https://youtube.com/PZXxPPToJYo?si=3H6TBPwtU-U3MXUj" target="_blank" class="pv-btn-outline">Watch Full PV</a>
+    </div>
+  </div>
+
+</section>
+
+
+<main>
+  <!-- Featured Novel Section -->
+  <section class="recommended">
+    <h2>Recommended Novels</h2>
+
+    <div class="featured-novel">
+      <div class="novel-cover">
+        <img src="Library/LOM.jpg" alt="The Lord of Mysteries">
+      </div>
+
+      <div class="novel-info">
+        <h3>The Lord of Mysteries</h3>
+        <div class="rating">★4.9/5</div>
+        <p>Dengan bangkitnya kekuatan uap dan mesin, siapa yang bisa mendekati keberadaan seorang Beyonder? Terselubung oleh kabut sejarah dan kegelapan, siapa atau apakah kejahatan yang bersembunyi dan berbisik di telinga kita?
+
+          Bangun dari tidur dan dihadapkan pada serangkaian misteri, Zhou Mingrui mendapati dirinya bereinkarnasi sebagai Klein Moretti di dunia alternatif era Victoria. Ia menemukan sebuah dunia yang dipenuhi mesin, meriam, kapal tempur raksasa, kapal udara, mesin diferensial, serta ramuan, ramalan, kutukan, kartu tarot, dan artefak tersegel.</p>
+        <a href="detail-the-lord-of-mysteries.html" class="btn-small">Explore</a>
+      </div>
+    </div>
+
+    <!-- Novel Grid -->
+    <div class="novel-grid">
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/Cote.jpg"></div>
+        <h4>Classroom of the Elite</h4>
+        <div class="rating">★4.3/5</div>
+        <p>Koudo Ikusei High School seems like a utopia, but dark competition hides beneath it.</p>
+        <a href="detail-classroom-of-the-elite.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/SdwSlv.jpg"></div>
+        <h4>Shadow Slave</h4>
+        <div class="rating">★4.7/5</div>
+        <p>Koudo Ikusei High School tampak seperti sebuah utopia, tetapi persaingan gelap tersembunyi di baliknya.</p>
+        <a href="detail-shadow-slave.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/Eightysix.jpg"></div>
+        <h4>Eighty-Six</h4>
+        <div class="rating">★4.2/5</div>
+        <p>Sebuah negara mengklaim tidak memiliki korban jiwa—hanya karena anak-anak yang tidak diinginkanlah yang berperang untuk mereka.</p>
+        <a href="detail-eighty-six.html" class="btn-small">Explore</a>
+      </div>
+
+      <div class="novel-card">
+        <div class="novel-cover"><img src="Library/Chito.jpg"></div>
+        <h4>Chitose Is in the Ramune Bottle</h4>
+        <div class="rating">★4.4/5</div>
+        <p>Saku Chitose adalah siswa paling populer—sempurna, memikat, dan tak tersentuh.</p>
+        <a href="detail-chitose-is-in-the-ramune-bottle.html" class="btn-small">Explore</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Section -->
+  <section class="latest">
+    <h2>Latest Novels</h2>
+
+    <div class="latest-grid">
+      <div class="latest-card">
+        <a href="detail-circle-of-inevitability.html"><img src="Library/circle.jpg"></a>
+        <span>Lord of Mysteries: Circle of Inevitability</span>
+      </div>
+
+      <div class="latest-card">
+        <a href="detail-overlord.html"><img src="Library/Ovrld.jpg"></a>
+        <span>Overlord</span>
+      </div>
+
+      <div class="latest-card">
+        <a href="detail-too-many-losing-heroines.html"><img src="Library/TMLH.jpg"></a>
+        <span>Too Many Losing Heroines!</span>
+      </div>
+
+      <div class="latest-card">
+        <a href="detail-the-authors-pov.html"><img src="Library/TAPOV.jpg"></a>
+        <span>The Author's POV</span>
+      </div>
+
+      <div class="latest-card">
+        <a href="detail-the-beginning-after-the-end.html"><img src="Library/TBATE.jpg"></a>
+        <span>The Beginning After The End</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Popular Section -->
+  <section class="popular">
+    <h2>Popular Novels</h2>
+    <ul class="rank-list">
+  
+      <li>
+        <span class="rank-num">1</span>
+        <a href="detail-tanya-evil.html" class="rank-title">The Saga of Tanya the Evil</a>
+        <div class="rating">★4.7/5</div>
+      </li>
+  
+      <li>
+        <span class="rank-num">2</span>
+        <a href="detail-who-killed-the-hero.html" class="rank-title">Who Killed the Hero?</a>
+        <div class="rating">★4.6/5</div>
+      </li>
+  
+      <li>
+        <span class="rank-num">3</span>
+        <a href="detail-eminence-shadow.html" class="rank-title">The Eminence in Shadow</a>
+        <div class="rating">★4.5/5</div>
+      </li>
+  
+      <li>
+        <span class="rank-num">4</span>
+        <a href="detail-cultivation-online.html" class="rank-title">Cultivation Online</a>
+        <div class="rating">★4.3/5</div>
+      </li>
+  
+      <li>
+        <span class="rank-num">5</span>
+        <a href="detail-tale-of-the-white-empire.html" class="rank-title">Tale of the White Empire</a>
+        <div class="rating">★4.1/5</div>
+      </li>
+  
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 El-Novel. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="AboutUs.html">About Us</a> 
+  </div>
+</footer>
+<script>
+   const switchToggle = document.getElementById("mode-switch");
+    switchToggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode", switchToggle.checked);
+    });
+    const modeSwitch = document.getElementById("mode-switch");
+
+// Ambil mode dari localStorage
+const savedMode = localStorage.getItem("theme");
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true; // checkbox ikut aktif
+}
+
+// Saat toggle di-klik
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light"); // simpan pilihan
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark"); // simpan pilihan
+  }
+});
+
+const video = document.querySelector('.pv-video');
+const btn = document.getElementById('unmute-btn');
+
+btn.addEventListener('click', () => {
+  video.muted = !video.muted;
+  btn.textContent = video.muted ? "🔇" : "🔊";
+});
+</script>
+
+</body>
+</html>
+

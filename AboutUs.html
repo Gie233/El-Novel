@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" class="logo">El-Novel</a>
+  <nav class="nav-center">
+    <a href="index.html">Home</a>
+    <a href="novels.html">Novels</a>
+    <a href="explore.html">Explore</a>
+    <a href="joinUs.html">Join Us</a>
+    <a href="About.html" class="active">About</a>
+  </nav>
+
+  <div class="theme-toggle">
+    <input type="checkbox" id="mode-switch">
+    <label for="mode-switch" class="switch"></label>
+  </div>
+</header>
+
+<!-- ========================== -->
+<!--       ABOUT SECTION        -->
+<!-- ========================== -->
+
+<main class="about-container">
+
+  <h2 class="about-title">About El-Novel</h2>
+
+  <div class="about-box">
+
+    <img src="Library/BabyMag.jpg" alt="About Us" class="about-img">
+
+    <div class="about-text">
+      <h3>Siapa Kami?</h3>
+      <p>
+        <b>El-Novel</b> adalah platform baca novel digital yang dibuat untuk para pecinta sastra, penulis kreatif, 
+        dan siapa saja yang ingin menikmati berbagai cerita dari seluruh dunia.  
+      </p>
+
+      <p>
+        Dengan banya judul dari berbagai genre seperti fantasi, romantis, aksi, misteri, hingga slice of life, 
+        kami berkomitmen memberikan pengalaman membaca terbaik bagi semua kalangan.
+      </p>
+
+      <h3>Misi Kami</h3>
+      <ul class="about-list">
+        <li>Menjadi wadah bagi penulis lokal maupun internasional.</li>
+        <li>Mempermudah pembaca menemukan cerita yang mereka cintai.</li>
+        <li>Mendorong kreativitas dan pertumbuhan komunitas literasi.</li>
+      </ul>
+
+      <h3>Mengapa Memilih El-Novel?</h3>
+      <ul class="about-list">
+        <li>✔ Koleksi novel lengkap dan terus diperbarui.</li>
+        <li>✔ Fitur pencarian dan rekomendasi yang cerdas.</li>
+        <li>✔ Tampilan ringan, elegan, dan ramah pengguna.</li>
+        <li>✔ Gratis dan dapat digunakan kapan saja.</li>
+      </ul>
+
+      <h3>Bergabung Dengan Komunitas Kami!</h3>
+      <p>
+        Kami percaya setiap orang memiliki cerita yang layak untuk dibagikan.  
+        Bergabunglah dengan komunitas kami dan kembangkan imajinasi tanpa batas!
+      </p>
+
+      <a href="JoinUs.html" class="btn">Join Us</a>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2025 El-Novel. All rights reserved.</p>
+</footer>
+
+<!-- THEME SCRIPT -->
+<script>
+const modeSwitch = document.getElementById("mode-switch");
+const savedMode = localStorage.getItem("theme");
+
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true;
+}
+
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark");
+  }
+});
+</script>
+
+</body>
+</html>

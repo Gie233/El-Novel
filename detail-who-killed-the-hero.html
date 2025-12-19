@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Who Killed the Hero? | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">El-Novel</a>
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="novels.html" class="active">Novels</a>
+      <a href="explore.html">Explore</a>
+      <a href="joinUs.html" >Join Us</a>
+    </nav>
+    <div class="theme-toggle">
+      <input type="checkbox" id="mode-switch">
+      <label for="mode-switch" class="switch"></label>
+    </div>
+  </header>
+
+  <main class="novel-detail">
+    <div class="detail-container">
+      <div class="detail-content">
+        <!-- COVER -->
+        <div class="detail-cover">
+          <img src="Library/Who-Killed-Hero.jpg" alt="Who Killed the Hero">
+        </div>
+  
+        <!-- INFO -->
+        <div class="detail-info">
+          <h2>Who Killed The Hero</h2>
+          <p class="author"><strong>Author:</strong> PassiveParagon</p>
+          <div class="rating">★4.6/5</div>
+          <p><strong>Genre:</strong> Adventure, Fantasy, Psychological, Mystery</p>
+          <p class="desc">Ada seorang nabi yang menyatakan, “Seorang pahlawan yang akan mengalahkan Raja Iblis akan muncul dari desa ini.” Desa itu mempercayai ramalan tersebut karena ada seorang anak laki-laki yang mahir dalam ilmu pedang dan sihir. Delapan tahun kemudian, anak itu menjadi seorang pahlawan dan mengalahkan Raja Iblis. Namun, pada saat yang sama, ia menjadi seseorang yang tidak akan pernah kembali.
+            Mengapa sang pahlawan mati?
+            Empat tahun setelah kematiannya, ketika prestasi-prestasinya sedang disusun menjadi sebuah karya sastra, kebenaran di balik kematiannya pun mulai terungkap.</p>
+          </p>
+  
+          <div class="review-box">
+            <h3>Reviewer’s Thoughts</h3>
+            <p>“Di dunia fantasi yang terancam oleh seorang Demon Lord, apa yang membuat seseorang menjadi pahlawan sejati? Apakah itu kekuatan semata, kecerdasan, atau tekad yang tak tergoyahkan? Meskipun sifat-sifat itu penting, esensi sebenarnya dari kepahlawanan adalah sesuatu yang lebih dalam. Benar, memiliki kekuatan untuk mengalahkan musuh itu penting. Cerdas untuk mengatasi berbagai tantangan juga merupakan kunci. Dan ketangguhan untuk terus maju apa pun yang terjadi sangatlah vital. Namun, yang benar-benar membuat seseorang layak disebut pahlawan adalah kesediaan untuk melindungi hal-hal yang paling berarti.Seorang pahlawan digerakkan oleh rasa cinta pada keluarga, teman, dan kampung halamannya. Komitmen untuk melindungi dan menyelamatkan itulah yang memberi tujuan pada kekuatannya, arah pada kecerdasannya, dan kekuatan pada tekadnya. Mereka berdiri melawan kegelapan bukan hanya karena mereka mampu, tetapi karena mereka sangat peduli pada orang lain. Pada akhirnya, kualifikasi sejati seorang pahlawan adalah keinginan yang tak tergoyahkan untuk melindungi hal-hal yang penting, apa pun biayanya.”</p>
+          </div>
+
+        <section class="novel-pv no-pv">
+          <h3>Promotional Video</h3>
+
+          <div class="pv-placeholder">
+            <span>🎬 Promotional video is not available for this novel.</span>
+          </div>
+        </section>
+
+  
+          <div class="detail-buttons">
+            <a href="Novels.html" class="btn-small">← Back to Novels</a>
+            <a href="https://myanimelist.net/manga/165671/Dare_ga_Yuusha_wo_Koroshita_ka" class="btn-small">More Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 El-Novel. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="AboutUs.html">About Us</a> 
+    </div>
+  </footer>
+
+  <script>
+   const switchToggle = document.getElementById("mode-switch");
+    switchToggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode", switchToggle.checked);
+    });
+    const modeSwitch = document.getElementById("mode-switch");
+
+// Ambil mode dari localStorage
+const savedMode = localStorage.getItem("theme");
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true; // checkbox ikut aktif
+}
+
+// Saat toggle di-klik
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light"); // simpan pilihan
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark"); // simpan pilihan
+  }
+});
+
+
+// Ambil judul novel dari halaman (gunakan judul di <h2>)
+const novelTitle = document.querySelector("h2").innerText;
+
+// Ambil tanggal hari ini
+const today = new Date().toISOString().slice(0, 10);
+
+// --- Fungsi Ambil & Simpan ---
+function getData(key, defaultValue) {
+    return JSON.parse(localStorage.getItem(key)) || defaultValue;
+}
+
+function saveData(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+// --- DAILY COUNTER ---
+let daily = getData("dailyVisits", {});
+let dailyDate = localStorage.getItem("dailyDate");
+
+if (dailyDate !== today) {
+    daily = {}; // reset harian
+    localStorage.setItem("dailyDate", today);
+}
+
+// tambah kunjungan
+daily[novelTitle] = (daily[novelTitle] || 0) + 1;
+saveData("dailyVisits", daily);
+
+// --- WEEKLY COUNTER ---
+let weekly = getData("weeklyVisits", {});
+let weeklyStart = localStorage.getItem("weeklyStart");
+
+const now = new Date();
+const weekYear = `${now.getFullYear()}-W${Math.ceil(now.getDate() / 7)}`;
+
+if (weeklyStart !== weekYear) {
+    weekly = {}; // reset mingguan
+    localStorage.setItem("weeklyStart", weekYear);
+}
+
+weekly[novelTitle] = (weekly[novelTitle] || 0) + 1;
+saveData("weeklyVisits", weekly);
+
+// --- MONTHLY COUNTER ---
+let monthly = getData("monthlyVisits", {});
+let monthlyStart = localStorage.getItem("monthlyStart");
+const monthYear = `${now.getFullYear()}-${now.getMonth()+1}`;
+
+if (monthlyStart !== monthYear) {
+    monthly = {}; // reset bulanan
+    localStorage.setItem("monthlyStart", monthYear);
+}
+
+monthly[novelTitle] = (monthly[novelTitle] || 0) + 1;
+saveData("monthlyVisits", monthly);
+</script>
+
+  </script>
+</body>
+</html>
+
+

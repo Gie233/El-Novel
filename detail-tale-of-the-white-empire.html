@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tale of the White Empire | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">El-Novel</a>
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="novels.html" class="active">Novels</a>
+      <a href="explore.html">Explore</a>
+      <a href="joinUs.html" >Join Us</a>
+    </nav>
+    <div class="theme-toggle">
+      <input type="checkbox" id="mode-switch">
+      <label for="mode-switch" class="switch"></label>
+    </div>
+  </header>
+
+  <main class="novel-detail">
+    <div class="detail-container">
+      <div class="detail-content">
+        <div class="detail-cover">
+          <img src="Library/TOTWE.png" alt="Tale of the White Empire">
+        </div>
+
+        <div class="detail-info">
+          <h2>Tale of the White Empire</h2>
+          <p class="author"><strong>Author:</strong> Azure Pen</p>
+          <div class="rating">★4.1/5</div>
+          <p><strong>Genre:</strong> Fantasy, Adventure, War</p>
+
+          <p class="desc">
+            
+            “Ketika semua warna ditumpuk bersama, mereka menjadi putih. Apa yang kuciptakan adalah ‘Kerajaan Putih’ tempat semua ras hidup bersama.”
+            
+            Di Laut Grape, tempat berbagai ras terus berkonflik, Toto Gattoland, pangeran kedua Kerajaan Gattoland yang diperintah oleh suku “Meow” bertelinga kucing, bertemu dengan Artemisia, seorang gadis yang dikirim sebagai sandera oleh Ksatria Mawar Hitam yang bermusuhan.
+            
+            Awalnya tertutup, Artemisia perlahan mulai mendapatkan kembali senyumnya melalui interaksi dengan Toto dan teman-temannya. Namun, diskriminasi mendalam antara manusia dan Meow tetap ada, dan takdir kejam menunggu Toto dan Artemisia, yang mulai memupuk rasa cinta tipis di antara mereka.
+            
+            Sebuah pasukan besar yang dipimpin oleh ksatria berzirah, armada kapal layar yang memenuhi lautan, delapan pendekar pedang yang membawa manik sakral “Kebajikan”, “Kebenaran”, “Kesopanan”, “Kebijaksanaan”, “Kesetiaan”, “Kepercayaan”, “Bakti”, dan “Harmoni Saudara”. Pasukan mekanis yang meraung dengan mesin miasma, serta armada terbang dalam “Zona Melayang” terbatas 500 meter—Inumura Shoroku, pencipta seri “A Certain Aeronaut” dan “Propeller Opera”, menggambarkan medan perang dan kisah cinta yang belum pernah terlihat sebelumnya dengan kemampuan artistik yang luar biasa.
+            </p>
+
+          <div class="review-box">
+            <h3>Reviewer’s Thoughts</h3>
+            <p>Classic fantasy storytelling with rich moral depth. A slow burn that rewards readers with world-building and philosophical themes.</p>
+          </div>
+                    
+          <section class="novel-pv no-pv">
+            <h3>Promotional Video</h3>
+          
+            <div class="pv-placeholder">
+             <span>🎬 Promotional video is not available for this novel.</span>
+            </div>
+         </section>
+
+          <div class="detail-buttons">
+            <a href="Novels.html" class="btn-small">← Back to Novels</a>
+            <a href="" class="btn-small">More Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>© 2025 El-Novel. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="AboutUs.html">About Us</a> 
+    </div>
+  </footer>
+
+  <script>
+    const switchToggle = document.getElementById("mode-switch");
+    switchToggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode", switchToggle.checked);
+    });
+    const modeSwitch = document.getElementById("mode-switch");
+
+// Ambil mode dari localStorage
+const savedMode = localStorage.getItem("theme");
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true; // checkbox ikut aktif
+}
+
+// Saat toggle di-klik
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light"); // simpan pilihan
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark"); // simpan pilihan
+  }
+});
+
+// Ambil judul novel dari halaman (gunakan judul di <h2>)
+  const novelTitle = document.querySelector("h2").innerText;
+
+// Ambil tanggal hari ini
+const today = new Date().toISOString().slice(0, 10);
+
+// --- Fungsi Ambil & Simpan ---
+function getData(key, defaultValue) {
+    return JSON.parse(localStorage.getItem(key)) || defaultValue;
+}
+
+function saveData(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+// --- DAILY COUNTER ---
+let daily = getData("dailyVisits", {});
+let dailyDate = localStorage.getItem("dailyDate");
+
+if (dailyDate !== today) {
+    daily = {}; // reset harian
+    localStorage.setItem("dailyDate", today);
+}
+
+// tambah kunjungan
+daily[novelTitle] = (daily[novelTitle] || 0) + 1;
+saveData("dailyVisits", daily);
+
+// --- WEEKLY COUNTER ---
+let weekly = getData("weeklyVisits", {});
+let weeklyStart = localStorage.getItem("weeklyStart");
+
+const now = new Date();
+const weekYear = `${now.getFullYear()}-W${Math.ceil(now.getDate() / 7)}`;
+
+if (weeklyStart !== weekYear) {
+    weekly = {}; // reset mingguan
+    localStorage.setItem("weeklyStart", weekYear);
+}
+
+weekly[novelTitle] = (weekly[novelTitle] || 0) + 1;
+saveData("weeklyVisits", weekly);
+
+// --- MONTHLY COUNTER ---
+let monthly = getData("monthlyVisits", {});
+let monthlyStart = localStorage.getItem("monthlyStart");
+const monthYear = `${now.getFullYear()}-${now.getMonth()+1}`;
+
+if (monthlyStart !== monthYear) {
+    monthly = {}; // reset bulanan
+    localStorage.setItem("monthlyStart", monthYear);
+}
+
+monthly[novelTitle] = (monthly[novelTitle] || 0) + 1;
+saveData("monthlyVisits", monthly);
+  </script>
+</body>
+</html>

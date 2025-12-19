@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Classroom of the Elite | El-Novel</title>
+  <link rel="stylesheet" href="Styles/Style.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">El-Novel</a>
+    <nav class="nav-center">
+      <a href="index.html">Home</a>
+      <a href="novels.html" class="active">Novels</a>
+      <a href="explore.html">Explore</a>
+      <a href="joinUs.html" >Join Us</a>
+    </nav>
+    <div class="theme-toggle">
+      <input type="checkbox" id="mode-switch">
+      <label for="mode-switch" class="switch"></label>
+    </div>
+  </header>
+
+  <main class="novel-detail">
+    <div class="detail-container">
+      <div class="detail-content">
+        <div class="detail-cover">
+          <img src="Library/Cote.jpg" alt="Classroom of the Elite">
+        </div>
+
+        <div class="detail-info">
+          <h2>Classroom of the Elite</h2>
+          <p class="author"><strong>Author:</strong> Syougo Kinugasa</p>
+          <div class="rating">★4.3/5</div>
+          <p><strong>Genre:</strong> School, Psychological</p>
+
+          <p class="desc">Cerita berlangsung di Advanced Nurturing High School, sebuah sekolah menengah bergengsi dengan fasilitas mutakhir di mana hampir 100% siswanya melanjutkan ke universitas atau mendapatkan pekerjaan. Para siswa di sana memiliki kebebasan untuk memakai gaya rambut apa pun dan membawa barang-barang pribadi sesuka mereka. Sekolah tersebut tampak seperti surga, tetapi kenyataannya hanya siswa paling unggul yang mendapatkan perlakuan istimewa.
+
+            Tokoh utama, Kiyotaka Ayanokōji, adalah seorang siswa Kelas D, yaitu kelas tempat sekolah membuang para siswa “inferior” untuk dijadikan bahan ejekan. Karena suatu alasan tertentu, Kiyotaka “ceroboh” saat ujian masuk, sehingga ia ditempatkan di Kelas D. Setelah bertemu dengan Suzune Horikita dan Kikyō Kushida, dua siswa lain di kelasnya, keadaan Kiyotaka mulai berubah.</p>
+
+          <div class="review-box">
+            <h3>Reviewer’s Thoughts</h3>
+            <p>Classroom of the Elite menggunakan pendekatan yang mirip dengan light novel yang sebelumnya disebutkan. Ceritanya terutama berlangsung di sebuah sekolah raksasa yang didukung oleh pemerintah, dengan sistem mata uangnya sendiri yang menentukan kasta setiap kelas. MC yang sudah kita kenal, Kiyotaka Ayanokouji, memulai sebagai siswa di kelas dengan kasta terendah, 1-D, dan berniat menjalani kehidupan SMA yang normal. Pada awalnya, ia terlihat seperti siswa biasa yang mendapat nilai tepat 50 pada semua mata pelajaran dan memiliki kemampuan sosial yang biasa saja, atau bahkan mediocre. Secara alami, pembaca mungkin mengharapkan genre slice of life, atau mungkin romance, namun ternyata sekolah ini memungkinkan para siswanya hidup dalam kesengsaraan dan, dalam kasus terburuk, dikeluarkan jika mereka tidak menunjukkan performa yang cukup baik.</p>
+          </div>
+
+          <section class="novel-pv">
+            <h3>Promotional Video</h3>
+
+            <div class="pv-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/oRGmP2_2CJE?si=oWpKl8l3ujM7XH6P"
+                title="Novel Promotional Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          </section>
+
+          <div class="detail-buttons">
+            <a href="Novels.html" class="btn-small">← Back to Novels</a>
+            <a href="https://animax.fandom.com/wiki/Classroom_of_the_Elite" class="btn-small">More Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 El-Novel. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="AboutUs.html">About Us</a> 
+    </div>
+  </footer>
+
+  <script>
+    const switchToggle = document.getElementById("mode-switch");
+    switchToggle.addEventListener("change", () => {
+      document.body.classList.toggle("light-mode", switchToggle.checked);
+    });
+    const modeSwitch = document.getElementById("mode-switch");
+
+// Ambil mode dari localStorage
+const savedMode = localStorage.getItem("theme");
+if (savedMode === "light") {
+  document.body.classList.add("light-mode");
+  modeSwitch.checked = true;
+}
+
+// Ketika switch diubah
+modeSwitch.addEventListener("change", () => {
+  if (modeSwitch.checked) {
+    document.body.classList.add("light-mode");
+    localStorage.setItem("theme", "light");
+  } else {
+    document.body.classList.remove("light-mode");
+    localStorage.setItem("theme", "dark");
+  }
+});
+
+// ===============================
+// VISIT COUNTER FOR NOVEL DETAIL
+// ===============================
+function trackNovelVisit() {
+    const titleElement = document.querySelector("h2");
+    if (!titleElement) return; // stop if not a detail page
+
+    const novelTitle = titleElement.innerText;
+    const today = new Date().toISOString().slice(0, 10);
+
+    const now = new Date();
+    const weekKey = `${now.getFullYear()}-W${Math.ceil(now.getDate() / 7)}`;
+    const monthKey = `${now.getFullYear()}-${now.getMonth() + 1}`;
+
+    function load(key, def) {
+        return JSON.parse(localStorage.getItem(key)) || def;
+    }
+    function save(key, data) {
+        localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    // === DAILY ===
+    let daily = load("dailyVisits", {});
+    let dailyDate = localStorage.getItem("dailyDate");
+    if (dailyDate !== today) {
+        daily = {};
+        localStorage.setItem("dailyDate", today);
+    }
+    daily[novelTitle] = (daily[novelTitle] || 0) + 1;
+    save("dailyVisits", daily);
+
+    // === WEEKLY ===
+    let weekly = load("weeklyVisits", {});
+    let weeklyDate = localStorage.getItem("weeklyStart");
+    if (weeklyDate !== weekKey) {
+        weekly = {};
+        localStorage.setItem("weeklyStart", weekKey);
+    }
+    weekly[novelTitle] = (weekly[novelTitle] || 0) + 1;
+    save("weeklyVisits", weekly);
+
+    // === MONTHLY ===
+    let monthly = load("monthlyVisits", {});
+    let monthlyDate = localStorage.getItem("monthlyStart");
+    if (monthlyDate !== monthKey) {
+        monthly = {};
+        localStorage.setItem("monthlyStart", monthKey);
+    }
+    monthly[novelTitle] = (monthly[novelTitle] || 0) + 1;
+    save("monthlyVisits", monthly);
+}
+
+
+
+// ====================================================
+// RANKING PAGE — LOAD DATA
+// ====================================================
+function loadRanking(type, containerId = "rankingList") {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const data = JSON.parse(localStorage.getItem(type + "Visits")) || {};
+    const sorted = Object.entries(data).sort((a, b) => b[1] - a[1]);
+
+    container.innerHTML = "";
+
+    if (sorted.length === 0) {
+        container.innerHTML = "<li style='text-align:center;'>Belum ada data.</li>";
+        return;
+    }
+
+    sorted.forEach(([title, count], i) => {
+        container.innerHTML += `
+            <li>
+                <span class="rank-num">${i + 1}</span>
+                <span class="rank-title">${title}</span>
+                <span style="float:right;color:gray;">${count} views</span>
+            </li>
+        `;
+    });
+}
+
+  </script>
+</body>
+</html>
